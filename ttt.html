@@ -1,0 +1,395 @@
+<html>
+	<head>
+		<title>GAME</title>
+		<script>
+		var turn=1;
+		var btn="b";
+		var flag=0;
+		var x,y;
+		var sc1=0,sc2=0;
+		
+		function check(ID)
+		{
+			var arr2=[document.getElementById(1).innerHTML,document.getElementById(2).innerHTML,document.getElementById(3).innerHTML,
+					  document.getElementById(4).innerHTML,document.getElementById(5).innerHTML,document.getElementById(6).innerHTML,
+					  document.getElementById(7).innerHTML,document.getElementById(8).innerHTML,document.getElementById(9).innerHTML];
+					  if(turn>=3)
+					  {
+						if(ID==5)
+						{
+							if((arr2[ID-1]==arr2[ID-2]&& arr2[ID-1]==arr2[ID]) || (arr2[ID-1]==arr2[ID-4]&& arr2[ID-1]==arr2[ID+2]))
+							{
+								
+								flag=1;
+								if(arr2[ID-1]=='X')
+								{
+									alert("Winner is "+ y);
+									sc2++;
+								}
+								else{
+									alert("Winner is " + x);
+									sc1++;
+								}
+							}
+							else if((arr2[ID-1]==arr2[ID-5] && arr2[ID-1]==arr2[ID+3]) || (arr2[ID-1]==arr2[ID-3] && arr2[ID-1]==arr2[ID+1]))
+							{
+								flag=1;
+								if(arr2[ID-1]=='X')
+								{
+									alert("Winner is "+y);
+									sc2++;
+								}
+								else{
+									alert("Winner is "+ x);
+									sc1++;
+								}
+							}
+						}
+						if(ID%2==0)
+						{
+							if(ID==2)
+							{
+								if((arr2[ID-1]==arr2[ID-2]&& arr2[ID-1]==arr2[ID]) || (arr2[ID-1]==arr2[ID+2]&& arr2[ID-1]==arr2[ID+5]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is " + x);
+										sc1++;
+									}
+								}
+							}
+							if(ID==8)
+							{
+								if((arr2[ID-1]==arr2[ID-2]&& arr2[ID-1]==arr2[ID])||(arr2[ID-1]==arr2[ID-4] && arr2[ID-1]==arr2[ID-7])) 
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+x);
+										sc1++;
+									}
+								}
+							}
+							if(ID==4)
+							{
+								if((arr2[ID-1]==arr2[ID] && arr2[ID]==arr2[ID+1]) || (arr2[ID-1]==arr2[ID-4] && arr2[ID-1]==arr2[ID+2]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+							if(ID==6)
+							{
+								if((arr2[ID-1]==arr2[ID-2] && arr2[ID-1]==arr2[ID-3]) || (arr2[ID-1]==arr2[ID-4] && arr2[ID-1]==arr2[ID+2]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+						}
+						else
+						{
+							if(ID==1)
+							{
+								if((arr2[ID-1]==arr2[ID]&&arr2[ID]==arr2[ID+1])||(arr2[ID-1]==arr2[ID+2] && arr2[ID-1]==arr2[ID+5])||(arr2[ID-1]==arr2[ID+3] && arr2[ID-1]==arr2[ID+7]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+							if(ID==3)
+							{
+								if((arr2[ID-1]==arr2[ID-2]&&arr2[ID-1]==arr2[ID-3])||(arr2[ID-1]==arr2[ID+2] && arr2[ID-1]==arr2[ID+5])||(arr2[ID-1]==arr2[ID+1] && arr2[ID-1]==arr2[ID+3]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+							
+							if(ID==7)
+							{
+								if((arr2[ID-1]==arr2[ID] && arr2[ID-1]==arr2[ID+1])||(arr2[ID-1]==arr2[ID-4] && arr2[ID-1]==arr2[ID-7])||(arr2[ID-1]==arr2[ID-3] && arr2[ID-1]==arr2[ID-5]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+							if(ID==9)
+							{
+								if((arr2[ID-1]==arr2[ID-2] && arr2[ID-1]==arr2[ID-3]) || (arr2[ID-1]==arr2[ID-4] && arr2[ID-1]==arr2[ID-7]) || (arr2[ID-1]==arr2[ID-5] && arr2[ID-1]==arr2[ID-9]))
+								{
+									flag=1;
+									if(arr2[ID-1]=='X')
+									{
+										alert("Winner is "+ y);
+										sc2++;
+									}
+									else{
+										alert("Winner is "+ x);
+										sc1++;
+									}
+								}
+							}
+						}
+					  }
+		}
+		function change(ID)
+		{
+			if(turn<=9)
+			{
+				if(turn%2==0)
+				{
+					btn=btn+ID;
+					document.getElementById(ID).innerHTML="X";
+					document.getElementById(btn).disabled=true;
+					check(ID);
+					if(turn==9 && flag==0)
+					{
+						document.getElementById("turns").innerHTML="Game Ended in a Draw";	
+						document.getElementById("r1").style.visibility="visible";
+						document.getElementById("S").style.visibility="visible";
+						document.getElementById("score1").innerHTML=sc1;
+						document.getElementById("score2").innerHTML=sc2;
+						
+					}
+					else
+					{
+						document.getElementById("turns").innerHTML="Turn of "+x;					
+					}
+					btn="b";
+				}
+				else
+				{
+					btn=btn+ID;
+					document.getElementById(ID).innerHTML="O";
+					document.getElementById(btn).disabled=true;
+					check(ID);
+					if(turn==9 && flag==0)
+					{
+						document.getElementById("turns").innerHTML="Game Ended in a Draw ";	
+						document.getElementById("r1").style.visibility="visible";
+						document.getElementById("S").style.visibility="visible";
+						document.getElementById("score1").innerHTML=sc1;
+						document.getElementById("score2").innerHTML=sc2;						
+					}
+					else
+					{
+						document.getElementById("turns").innerHTML="Turn of "+y;
+					}
+					btn="b";
+				}
+				turn++;
+			}
+			if(flag==1)
+			{
+				document.getElementById("turns").innerHTML="Game Ended With a Winner";
+				document.getElementById("r1").style.visibility="visible";
+				document.getElementById("S").style.visibility="visible";
+				document.getElementById("score1").innerHTML=sc1;
+				document.getElementById("score2").innerHTML=sc2;
+				document.getElementById("b1").disabled=true;		
+				document.getElementById("b2").disabled=true;
+				document.getElementById("b3").disabled=true;
+				document.getElementById("b4").disabled=true;
+				document.getElementById("b5").disabled=true;
+				document.getElementById("b6").disabled=true;
+				document.getElementById("b7").disabled=true;
+				document.getElementById("b8").disabled=true;
+				document.getElementById("b9").disabled=true;
+			}
+			/*if(turns==9 && flag==0){
+				document.getElementById("turns").innerHTML="Game Ended in a draw";
+				document.getElementById("r1").style.visibility="visible";
+			}*/
+		}
+		function start()
+		{
+			var f=0;
+			x=document.getElementById("p1").value;
+			y=document.getElementById("p2").value;
+			if(x=="")
+			{
+				document.getElementById("p1").style.border=" 2px solid red";
+				document.getElementById("p1error").innerHTML=" Please Enter Name";
+				f=1;
+			}
+			else{
+				f=0;
+				document.getElementById("p1").style.border="";
+				document.getElementById("p1error").innerHTML="";
+			}
+			if(y=="")
+			{
+				document.getElementById("p2").style.border=" 2px solid red";
+				document.getElementById("p2error").innerHTML=" Please Enter Name";
+				f=1;
+			}
+			else{
+				f=0;
+				document.getElementById("p2").style.border="";
+				document.getElementById("p2error").innerHTML="";
+			}
+			if(f==0)
+			{
+				document.getElementById("pl1").innerHTML=x + ' O';
+				document.getElementById("pl2").innerHTML=y + ' X';
+				document.getElementById("turns").innerHTML="Turn of " + x;
+				document.getElementById("t3").style.display="none";
+				document.getElementById("t2").style.visibility="visible";
+				document.getElementById("t1").style.visibility="visible";
+				
+				document.getElementById("score1").style.visibility="visible";
+				document.getElementById("score2").style.visibility="visible";
+			}
+			
+		}
+		function reset()
+		{
+			document.getElementById(1).innerHTML="";
+			document.getElementById(2).innerHTML="";
+			document.getElementById(3).innerHTML="";
+			document.getElementById(4).innerHTML="";
+			document.getElementById(5).innerHTML="";
+			document.getElementById(6).innerHTML="";
+			document.getElementById(7).innerHTML="";
+			document.getElementById(8).innerHTML="";
+			document.getElementById(9).innerHTML="";
+			document.getElementById("b1").disabled=false;		
+			document.getElementById("b2").disabled=false;
+			document.getElementById("b3").disabled=false;
+			document.getElementById("b4").disabled=false;
+			document.getElementById("b5").disabled=false;
+			document.getElementById("b6").disabled=false;
+			document.getElementById("b7").disabled=false;
+			document.getElementById("b8").disabled=false;
+			document.getElementById("b9").disabled=false;
+			turn=1;
+			flag=0;
+			document.getElementById("turns").innerHTML="";
+			document.getElementById("turns").innerHTML="Turn of "+x;
+			document.getElementById("r1").style.visibility="hidden";
+		}
+		</script>
+		
+		<style>
+		
+			h1{padding-left:500px;
+			   font-family:Cursive;
+			   font-size:40px;}
+			table,tr,td{width:200px;
+						height:80px;			
+				border:5px solid green;
+				font-size:20px;}
+			div{padding-left:10px;}
+			#S{font-size:40px;font-family:Sans Serif;margin-left:160px;}
+			#turns{font-size:30px;}
+			
+			#t1,#t2,#r1,#S,#score1,#score2{visibility:hidden;}
+			#score1{margin-left:600px;font-size:30px;}
+			#score2{margin-left:150px;font-size:30px;}
+			'
+		</style>
+	</head>
+	<!--
+		http://practicals.epizy.com/index.html
+	-->
+	<body>
+		<h1>Tic Tac Toe Game </h1>
+		<div id="t3">
+		Player 1 : <input type="text" id="p1"><span id="p1error"></span><br/><br/>
+		Player 2 : <input type="text" id="p2"><span id="p2error"></span><br/><br/>
+		<input type ="button" value="START" id="s1" onclick="start()"><br/><br/>
+		</div>
+		<div>
+			<table border="2px" cellspacing="8px" cellpadding="25px" id="t1">
+				<tr>
+					<td id="1"></td>
+					<td id="2"></td>
+					<td id="3"></td>
+				</tr>
+				<h1 id="S">Scores</h1>
+				<span id="score1"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span id="score2"></span>
+				<tr>
+					<td id="4"></td>
+					<td id="5"></td>
+					<td id="6"></td>
+				</tr>
+				
+				<tr>
+					<td id="7"></td>
+					<td id="8"></td>
+					<td id="9"></td>
+				</tr>
+			</table><br/>
+			
+		
+			<div id="t2">
+			<input type="button" value="1" id="b1" onclick="change(1)">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="2" id="b2" onclick="change(2)" >&nbsp;&nbsp;&nbsp;
+			<input type="button" value="3" id="b3" onclick="change(3)"><br/>
+			<input type="button" value="4" id="b4" onclick="change(4)">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="5" id="b5" onclick="change(5)">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="6" id="b6" onclick="change(6)"><br/>
+			<input type="button" value="7" id="b7" onclick="change(7)">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="8" id="b8" onclick="change(8)">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="9" id="b9" onclick="change(9)">
+			</div><br/>	
+		</div>
+			<b/>
+			<span id="pl1"></span><br/>
+			<span id="pl2"></span><br/><br/>
+			<span id="turns"></span><br/><br/>
+			<input type="button" value="reset" id="r1" onclick="reset()">
+	</body>
+</html>
+
